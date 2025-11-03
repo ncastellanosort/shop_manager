@@ -1,4 +1,3 @@
-import Input from "../components/ui/input";
 import { Link } from "react-router-dom";
 import { Building2, UserRound } from "lucide-react";
 import { useState } from "react";
@@ -19,7 +18,7 @@ function Signup() {
   const { register } = useRegister();
 
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(e: React.ChangeEvent<HTMLinputElement>) {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -53,16 +52,16 @@ function Signup() {
         <div>
           <p className="mx-4 text-neutral-200">Profile image</p>
           <UserRound className="text-neutral-200"/>
-          <Input type="file"></Input>
+          <input type="file"></input>
         </div>
         <div className="grid grid-cols-2">
-          <Input name="taxId" placeholder="Tax ID" type="number" value={formData.taxId} onChange={handleChange}/>
-          <Input name="name" placeholder="Name" type="text" value={formData.name} onChange={handleChange}/>
-          <Input name="address" placeholder="Address" type="text" value={formData.address} onChange={handleChange}/>
-          <Input name="contact" placeholder="Contact" type="tel" value={formData.contact} onChange={handleChange}/>
-          <Input name="email" placeholder="Email Address" type="email" value={formData.email} onChange={handleChange}/>
-          <Input name="password" placeholder="Password" type="password" value={formData.password} onChange={handleChange}/>
-          <Input name="confirmedPassword" placeholder="Confirm Password" type="password" value={formData.confirmedPassword} onChange={handleChange}/>
+          <input name="taxId" placeholder="Tax ID" type="number" value={formData.taxId} onChange={handleChange}/>
+          <input name="name" placeholder="Name" type="text" value={formData.name} onChange={handleChange}/>
+          <input name="address" placeholder="Address" type="text" value={formData.address} onChange={handleChange}/>
+          <input name="contact" placeholder="Contact" type="tel" value={formData.contact} onChange={handleChange}/>
+          <input name="email" placeholder="Email Address" type="email" value={formData.email} onChange={handleChange}/>
+          <input name="password" placeholder="Password" type="password" value={formData.password} onChange={handleChange}/>
+          <input name="confirmedPassword" placeholder="Confirm Password" type="password" value={formData.confirmedPassword} onChange={handleChange}/>
         </div>
         <div className="flex flex-col items-center justify-center">
           <button className="

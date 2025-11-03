@@ -4,19 +4,19 @@ import Products from "./pages/products";
 import Orders from "./pages/orders";
 import Dashboard from "./pages/dashboard";
 import Layout from "./components/layout";
-import Login from "./pages/login";
-import Signup from "./pages/signup";
 import NotFound from "./pages/not-found";
 import AuthProvider from "./contexts/auth/auth-provider";
 import PrivateRoute from "./contexts/auth/private-route";
+import { LoginForm } from "./components/login-form";
+import { SignupForm } from "./components/signup-form";
 
 function App() {
   return (
     <AuthProvider>
       <Routes>
         <Route index element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/signup" element={<SignupForm />} />
 
         <Route element={<PrivateRoute><Layout /></PrivateRoute>}>
           <Route path="/dashboard" element={<Dashboard />} />
