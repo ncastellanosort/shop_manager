@@ -47,7 +47,7 @@ function Sidebar() {
         <button
           className="
             py-1
-            px-3
+            px-2
             w-full
             my-1
             text-neutral-500
@@ -66,7 +66,7 @@ function Sidebar() {
           onClick={handleLogOut}
           className="
             py-1
-            px-3
+            px-2
             w-full
             my-1
             text-neutral-500
