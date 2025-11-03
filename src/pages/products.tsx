@@ -44,7 +44,7 @@ function Products() {
     <>
     <div className="flex flex-row justify-between">
       <h2 className="text-neutral-200 text-2xl">Products</h2>
-      <button className="text-neutral-400 px-1 py-2 rounded-md hover:bg-neutral-900 animation duration-150 cursor-pointer flex flex-row justify-center items-center gap-x-1">
+      <button className="text-neutral-400 px-1 py-2 rounded-md hover:bg-neutral-900 hover:text-neutral-200 animation duration-150 cursor-pointer flex flex-row justify-center items-center gap-x-1">
         <PlusIcon />
         <p className="pr-1">New Product</p>
       </button>
