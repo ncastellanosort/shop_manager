@@ -33,8 +33,6 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
-    console.log(e.target);
-    console.log(formData);
     setFormData((prev) => ({
       ...prev,
       [name]: value,
