@@ -57,6 +57,7 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
   return (
     <Card {...props} className="w-[400px] mx-auto my-12">
       <CardHeader>
+        <h2 className="scroll-m-20 text-center text-4xl mb-2 font-extrabold tracking-tight text-balance">FLowERP</h2>
         <CardTitle>Create an account</CardTitle>
         <CardDescription>
           Enter your information below to create your account

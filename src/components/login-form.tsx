@@ -46,6 +46,7 @@ export function LoginForm({
   return (
     <div className={cn("w-full h-screen flex flex-col justify-center items-center gap-6", className)} {...props}>
       <Card className="w-[400px]">
+        <h2 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance">FLowERP</h2>
         <CardHeader>
           <CardTitle>Login to your account</CardTitle>
           <CardDescription>
