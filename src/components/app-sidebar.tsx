@@ -3,15 +3,15 @@
 import * as React from "react"
 import {
   AudioWaveform,
-  BookOpen,
-  Bot,
+  Barcode,
   Command,
   Frame,
   GalleryVerticalEnd,
+  Gauge,
+  LayoutPanelTop,
   Map,
   PieChart,
-  Settings2,
-  SquareTerminal,
+  UserStar,
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
@@ -27,7 +27,6 @@ import {
 } from "@/components/ui/sidebar"
 import { AuthContext } from "@/contexts/auth/auth-context"
 
-// This is sample data.
 const data = {
   user: {
     name: "shadcn",
@@ -53,10 +52,10 @@ const data = {
   ],
   navMain: [
     {
-      title: "Playground",
-      url: "#",
-      icon: SquareTerminal,
-      isActive: true,
+      title: "Dashboard",
+      url: "/dashboard",
+      icon: Gauge,
+      isActive: false,
       items: [
         {
           title: "History",
@@ -73,66 +72,61 @@ const data = {
       ],
     },
     {
-      title: "Models",
-      url: "#",
-      icon: Bot,
+      title: "Products",
+      url: "/products",
+      icon: Barcode,
+      isActive: false,
       items: [
         {
-          title: "Genesis",
+          title: "History",
           url: "#",
         },
         {
-          title: "Explorer",
+          title: "Starred",
           url: "#",
         },
         {
-          title: "Quantum",
+          title: "Settings",
           url: "#",
         },
       ],
     },
     {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
+      title: "Categories",
+      url: "/categories",
+      icon: LayoutPanelTop,
+      isActive: false,
       items: [
         {
-          title: "Introduction",
+          title: "History",
           url: "#",
         },
         {
-          title: "Get Started",
+          title: "Starred",
           url: "#",
         },
         {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
+          title: "Settings",
           url: "#",
         },
       ],
     },
     {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
+      title: "Suppliers",
+      url: "/suppliers",
+      icon: UserStar,
+      isActive: false,
       items: [
         {
-          title: "General",
+          title: "History",
           url: "#",
         },
         {
-          title: "Team",
+          title: "Starred",
           url: "#",
         },
         {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
+          title: "Settings",
           url: "#",
         },
       ],
