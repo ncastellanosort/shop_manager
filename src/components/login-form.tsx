@@ -76,7 +76,7 @@ export function LoginForm({
                     Forgot your password?
                   </a>
                 </div>
-                <Input id="password" name="password" type="password" onChange={handleChange} required />
+                <Input id="password" name="password" type="password" onChange={handleChange} placeholder="********" required />
               </Field>
               <Field>
                 <Button type="submit">Login</Button>
