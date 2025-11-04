@@ -4,6 +4,8 @@ import type { Product } from "@/types/product";
 import { PlusIcon } from "lucide-react";
 import { DataTable } from "./data-table";
 import { columns } from "./columns";
+import { Button } from "@/components/ui/button";
+import { EditProductDialog } from "./edit-product";
 
 
 function Products() {
@@ -44,12 +46,11 @@ function Products() {
 
   return (
     <>
-    <div className="flex flex-row justify-between">
-      <h2 className="text-neutral-200 text-2xl">Products</h2>
-      <button className="text-neutral-400 px-1 py-2 rounded-md hover:bg-neutral-900 animation duration-150 cursor-pointer flex flex-row justify-center items-center gap-x-1">
-        <PlusIcon />
-        <p className="pr-1">New Product</p>
-      </button>
+    <div className="flex flex-row justify-between mb-2">
+      <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">Products</h2>
+      <div className="flex flex-wrap items-center gap-2 md:flex-row">
+        <EditProductDialog />
+      </div>
     </div>
     <DataTable columns={columns} data={products || []} />
     </>
