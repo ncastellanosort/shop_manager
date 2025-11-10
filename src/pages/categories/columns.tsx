@@ -33,7 +33,7 @@ export const columns: ColumnDef<CategoryColumns>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const product = row.original;
+      const category = row.original;
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -43,13 +43,13 @@ export const columns: ColumnDef<CategoryColumns>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Acciones</DropdownMenuLabel>
-            <DropdownMenuItem onClick={() => navigator.clipboard.writeText(product.sku)}>
-              Copiar SKU
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuItem onClick={() => navigator.clipboard.writeText(category.name)}>
+              Copy name
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View product</DropdownMenuItem>
-            <DropdownMenuItem>Edit product</DropdownMenuItem>
+            <DropdownMenuItem>View category</DropdownMenuItem>
+            <DropdownMenuItem>Edit category</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );

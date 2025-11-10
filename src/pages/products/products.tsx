@@ -5,7 +5,6 @@ import { columns } from "./columns";
 import { NewProductDialog } from "./new-product";
 import type { Product } from "./types/product";
 
-
 function Products() {
   const auth = useContext(AuthContext) 
   const [products, setProducts] = useState<Product[]>();
