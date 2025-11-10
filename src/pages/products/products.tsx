@@ -12,30 +12,29 @@ function Products() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const fetchProducts = async (token: string | null | undefined) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetch('http://localhost:3000/products', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      });
+
+      if (!res.ok) throw new Error('err fetching data');
+      const data = await res.json() as Product[];
+      setProducts(data);
+    } catch (err) {
+      setError((err as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     if (!auth?.token) return;
-
-    const fetchProducts = async (token: string | null | undefined) => {
-      setLoading(true);
-      setError(null);
-
-      try {
-        const res = await fetch('http://localhost:3000/products', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          }
-        });
-
-        if (!res.ok) throw new Error('err fetching data');
-        const data = await res.json() as Product[];
-        setProducts(data);
-      } catch (err) {
-        setError((err as Error).message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchProducts(auth?.token);
   }, [auth?.token]);
 

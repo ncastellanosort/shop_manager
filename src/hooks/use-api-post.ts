@@ -1,7 +1,7 @@
 import { AuthContext } from "@/contexts/auth/auth-context";
 import { useState, useContext } from "react";
 
-export const  useApiPost = (endpoint: string) => {
+export const useApiPost = (endpoint: string) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -29,8 +29,9 @@ export const  useApiPost = (endpoint: string) => {
 
       setData(apiData);
       return { res, datas: apiData }
-    } catch (e: any) {
-      return { res: null, data: null, error: e.message }
+    } catch (err) {
+      setError((err as Error).message);
+      return { res: null, data: null, error: (err as Error).message }
     } finally {
       setLoading(false);
     }
