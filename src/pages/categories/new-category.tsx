@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label"
 import { PlusIcon } from "lucide-react"
 import { useState } from "react"
 import type { Category } from "./types/category"
+import { useApiPost } from "@/hooks/use-api-post"
 
 const ProductInputs = [
   {
@@ -28,11 +29,12 @@ const ProductInputs = [
   },
 ]
 
-export function NewCategoryDialog() {
+export function NewCategoryDialog({ onSuccess }: { onSuccess: () => void }) {
+  const { postApi } = useApiPost('http://localhost:3000/categories');
+
   const [formData, setFormData] = useState<Partial<Category>>({
     name: "",
     description: "",
-    is_active: undefined,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,8 +45,13 @@ export function NewCategoryDialog() {
     }));
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const { res } = await postApi(formData);
+    if (res?.ok) {
+      onSuccess();
+      setFormData({ name: "", description: ""});
+    }
   }
 
   const displayInputs = () => {
@@ -58,7 +65,7 @@ export function NewCategoryDialog() {
 
   return (
     <Dialog>
-      <form onSubmit={handleSubmit}>
+      <div>
         <DialogTrigger asChild>
         <Button variant="outline">
         New Category
@@ -72,17 +79,17 @@ export function NewCategoryDialog() {
               Create a new category here. Click create when you're done.
             </DialogDescription>
           </DialogHeader>
-          <div className="grid gap-4">
+          <form className="grid gap-4" onSubmit={handleSubmit}>
           { displayInputs() }
-          </div>
           <DialogFooter>
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
             <Button type="submit">Create</Button>
           </DialogFooter>
-        </DialogContent>
-      </form>
+           </form>
+       </DialogContent>
+      </div>
     </Dialog>
   )
 }

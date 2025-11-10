@@ -11,30 +11,28 @@ function Categories() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const fetchCategories = async (token: string | null | undefined) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetch('http://localhost:3000/categories', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      });
+
+      if (!res.ok) throw new Error('err fetching data');
+      const data = await res.json() as Category[]
+      setCategories(data);
+    } catch (err) {
+      setError((err as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    if (!auth?.token) return;
-
-    const fetchCategories = async (token: string | null | undefined) => {
-      setLoading(true);
-      setError(null);
-
-      try {
-        const res = await fetch('http://localhost:3000/categories', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          }
-        });
-
-        if (!res.ok) throw new Error('err fetching data');
-        const data = await res.json() as Category[]
-        setCategories(data);
-      } catch (err) {
-        setError((err as Error).message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchCategories(auth?.token);
   }, [auth?.token]);
 
@@ -46,7 +44,7 @@ function Categories() {
     <div className="flex flex-row justify-between mb-2">
       <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">Categories</h2>
       <div className="flex flex-wrap items-center gap-2 md:flex-row">
-        <NewCategoryDialog />
+        <NewCategoryDialog onSuccess={() => {fetchCategories(auth?.token)}} />
       </div>
     </div>
     <DataTable columns={columns} data={categories || []} />
