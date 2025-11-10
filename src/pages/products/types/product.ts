@@ -5,7 +5,6 @@ export type Product = {
   barcode?: string;
   name: string;
   brand: string;
-  tags: string[];
   description?: string | null;
   category_id?: number | null;
   supplier_id?: number | null;
@@ -28,4 +27,3 @@ export type Product = {
   updated_at: string;
   deleted_at?: string | null;
 };
-

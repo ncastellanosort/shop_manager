@@ -11,64 +11,24 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-export type ProductColumns = {
-  id: number;
-  sku: string;
-  barcode?: string;
+export type CategoryColumns = {
   name: string;
-  brand: string;
-  description?: string | null;
-
-  purchase_price: number;
-  sale_price: number;
-  tax: number;
-  currency: string;
-
-  stock: number;
-  min_stock: number;
-  unit: string;
-  weight?: number | null;
-
-  status: 'active' | 'inactive' | 'discontinued';
+  description: string | null;
+  is_active: boolean;
 };
 
-export const columns: ColumnDef<ProductColumns>[] = [
-  {
-    accessorKey: "sku",
-    header: "SKU",
-  },
+export const columns: ColumnDef<CategoryColumns>[] = [
   {
     accessorKey: "name",
     header: "Name",
   },
   {
-    accessorKey: "brand",
-    header: "Brand",
+    accessorKey: "description",
+    header: "Description",
   },
   {
-    accessorKey: "sale_price",
-    header: "Sale price",
-    cell: ({ row }) => `${row.original.currency} ${row.original.sale_price.toFixed(2)}`,
-  },
-  {
-    accessorKey: "stock",
-    header: "Stock",
-  },
-  {
-    accessorKey: "min_stock",
-    header: "Min. Stock",
-  },
-  {
-    accessorKey: "status",
-    header: "Status",
-    cell: ({ row }) => {
-      const status = row.original.status;
-      return status === "active"
-        ? "Activo"
-        : status === "inactive"
-        ? "Inactivo"
-        : "Descontinuado";
-    },
+    accessorKey: "is_active",
+    header: "Active",
   },
   {
     id: "actions",
@@ -96,4 +56,3 @@ export const columns: ColumnDef<ProductColumns>[] = [
     },
   },
 ];
-

@@ -8,6 +8,7 @@ import AuthProvider from "./contexts/auth/auth-provider";
 import PrivateRoute from "./contexts/auth/private-route";
 import { LoginForm } from "./components/login-form";
 import { SignupForm } from "./components/signup-form";
+import Categories from "./pages/categories/categories";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route element={<PrivateRoute><Layout /></PrivateRoute>}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/categories" element={<Categories />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />
