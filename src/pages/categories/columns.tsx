@@ -12,10 +12,30 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 export type CategoryColumns = {
+  id: number,
   name: string;
   description: string | null;
   is_active: boolean;
 };
+
+const deleteCategory = async (id: number) => {
+  try {
+    const res = await fetch(`http://localhost:3000/categories/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Authorization": `Bearer ${auth?.token}`,
+      },
+    });
+
+    const apiData = await res.json();
+
+    if (!res.ok) {
+      throw new Error(apiData || "err deleting data");
+    }     
+  } catch (err) {
+      throw new Error(`error deleting data ${(err as Error).message}`)
+  }
+}
 
 export const columns: ColumnDef<CategoryColumns>[] = [
   {
@@ -48,8 +68,8 @@ export const columns: ColumnDef<CategoryColumns>[] = [
               Copy name
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View category</DropdownMenuItem>
             <DropdownMenuItem>Edit category</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => {deleteCategory(category.id)}}>Delete category</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
